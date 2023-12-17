@@ -15,4 +15,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
       format-sql: true
+api:
+  key: ${API_KEY}
 
