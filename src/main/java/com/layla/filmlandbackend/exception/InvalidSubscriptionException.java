@@ -1,8 +1,8 @@
 package com.layla.filmlandbackend.exception;
 
-public class NoDuplicateSubscriptionException extends IllegalArgumentException{
+public class InvalidSubscriptionException extends IllegalArgumentException {
 
-    public NoDuplicateSubscriptionException(String message){
+    public InvalidSubscriptionException(String message) {
         super(message);
     }
 }

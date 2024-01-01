@@ -10,11 +10,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashSet;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class FilmlandUserService implements UserService {
     private final FilmlandUserRepository repo;
     private final PasswordEncoder encoder;
@@ -33,9 +31,9 @@ public class FilmlandUserService implements UserService {
 
         FilmlandUser newUser = new FilmlandUser(dto.username(),
                 encoder.encode(dto.password()),
-                AuthRoles.USER.name(),
-                new LinkedHashSet<>());
+                AuthRoles.USER.name());
 
         return repo.save(newUser);
     }
+
 }

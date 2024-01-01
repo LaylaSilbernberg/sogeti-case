@@ -1,5 +1,7 @@
 package com.layla.filmlandbackend.enums;
 
+import com.layla.filmlandbackend.controller.dto.CategoryDTO;
+
 public enum SubscriptionCategory {
     DUTCH_FILMS("Dutch films", 10, 4.0),
     DUTCH_SERIES("Dutch series", 20, 6.0),
@@ -34,5 +36,9 @@ public enum SubscriptionCategory {
                 ", availableContent=" + availableContent +
                 ", price=" + price +
                 '}';
+    }
+
+    public CategoryDTO makeDTO(){
+        return new CategoryDTO(this.name, this.availableContent, this.price);
     }
 }

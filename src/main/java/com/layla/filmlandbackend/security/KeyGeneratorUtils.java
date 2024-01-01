@@ -1,5 +1,7 @@
 package com.layla.filmlandbackend.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.security.KeyPair;
@@ -11,6 +13,7 @@ final class KeyGeneratorUtils {
     private KeyGeneratorUtils() {
 
     }
+    private static final Logger LOG = LoggerFactory.getLogger(KeyGeneratorUtils.class);
 
     static KeyPair generateRSAKey(){
         KeyPair keypair = null;
@@ -22,7 +25,7 @@ final class KeyGeneratorUtils {
             return keypair;
 
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            LOG.atError().log(e.getMessage());
         }
         return keypair;
     }

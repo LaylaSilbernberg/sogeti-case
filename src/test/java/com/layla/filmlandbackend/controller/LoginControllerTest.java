@@ -40,7 +40,7 @@ class LoginControllerTest {
     private final LoginRequestDTO dto = new LoginRequestDTO("mock@filmland-assessment.nl", "Java/90");
 
     @Test
-    void register(){
+    void register() {
         when(userService.registerNewUser(any(LoginRequestDTO.class)))
                 .thenReturn(new FilmlandUser("info@filmland-assessment.nl",
                         "JavaIsCool90",
@@ -58,11 +58,9 @@ class LoginControllerTest {
         when(authManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
                 .thenReturn(new UsernamePasswordAuthenticationToken("Test", "Test"));
 
-       ResponseEntity<ResponseDTO> response = controller.login(dto);
+        ResponseEntity<ResponseDTO> response = controller.login(dto);
 
-       assertEquals(HttpStatus.OK, response.getStatusCode());
-       assertTrue(response.getHeaders().containsKey(HttpHeaders.AUTHORIZATION));
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(response.getHeaders().containsKey(HttpHeaders.AUTHORIZATION));
     }
-
-
 }

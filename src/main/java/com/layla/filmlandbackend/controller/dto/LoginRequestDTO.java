@@ -1,14 +1,17 @@
 package com.layla.filmlandbackend.controller.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record LoginRequestDTO(
-        @NotNull
-        @NotBlank
+
+        @NotNull(message = "Cannot be empty")
+        @NotBlank(message = "Cannot be empty")
+        @Email(message = "Must be a valid email address")
         String username,
-        @NotNull
-        @NotBlank
+        @NotNull(message = "Cannot be empty")
+        @NotBlank(message = "Cannot be empty")
         String password
 ) {
 }

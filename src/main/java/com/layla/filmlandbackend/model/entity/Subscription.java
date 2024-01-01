@@ -1,11 +1,18 @@
 package com.layla.filmlandbackend.model.entity;
 
+import com.layla.filmlandbackend.controller.dto.SubscriptionDTO;
 import com.layla.filmlandbackend.enums.SubscriptionCategory;
 import jakarta.persistence.*;
+import org.hibernate.proxy.HibernateProxy;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "subscriptions")
@@ -22,18 +29,34 @@ public class Subscription {
 
     private String startDate;
 
-    @ManyToMany(mappedBy = "subscriptions", fetch = FetchType.LAZY)
+    private int uses;
+
+    @ManyToMany(mappedBy = "subscriptions", cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     private Set<FilmlandUser> users = new LinkedHashSet<>();
+
+    public Set<FilmlandUser> getUsers() {
+        return new LinkedHashSet<>(users);
+    }
+
+    public void addUser(FilmlandUser user) {
+        users.add(user);
+        price = BigDecimal.valueOf(price)
+                .divide(BigDecimal.valueOf(users.size()), 2, RoundingMode.HALF_UP)
+                .doubleValue();
+    }
+
 
     public Subscription(){
 
     }
 
-    public Subscription(SubscriptionCategory category, double price, String startDate, Set<FilmlandUser> users) {
+    public Subscription(SubscriptionCategory category, FilmlandUser... filmlandUsers) {
         this.category = category;
-        this.price = price;
-        this.startDate = startDate;
-        this.users = users;
+        this.price = this.category.getPrice();
+        this.startDate = LocalDate.now().toString();
+        users = Arrays
+                .stream(filmlandUsers)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public Long getId() {
@@ -64,35 +87,37 @@ public class Subscription {
         this.startDate = startDate;
     }
 
-    public Set<FilmlandUser> getUsers() {
-        return users;
+
+    public void incrementUses(){
+        this.uses++;
+    }
+    public void resetUses(){
+        this.uses = 0;
     }
 
-    public void setUsers(Set<FilmlandUser> users) {
-        this.users = users;
+
+    public SubscriptionDTO makeDto(){
+        return new SubscriptionDTO(
+                this.category.getName(),
+                this.category.getAvailableContent() - uses,
+                this.price,
+                startDate
+        );
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null) return false;
+        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+        if (thisEffectiveClass != oEffectiveClass) return false;
         Subscription that = (Subscription) o;
-        return Double.compare(price, that.price) == 0 && Objects.equals(id, that.id) && category == that.category && Objects.equals(startDate, that.startDate) && Objects.equals(users, that.users);
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, category, price, startDate, users);
-    }
-
-    @Override
-    public String toString() {
-        return "Subscription{" +
-                "id=" + id +
-                ", category=" + category +
-                ", price=" + price +
-                ", startDate='" + startDate + '\'' +
-                ", users=" + users +
-                '}';
+    public final int hashCode() {
+        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
 }
