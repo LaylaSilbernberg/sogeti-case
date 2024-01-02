@@ -1,6 +1,6 @@
 package com.layla.filmlandbackend.enums;
 
-import com.layla.filmlandbackend.controller.dto.CategoryDTO;
+import com.layla.filmlandbackend.model.dto.CategoryDTO;
 
 public enum SubscriptionCategory {
     DUTCH_FILMS("Dutch films", 10, 4.0),

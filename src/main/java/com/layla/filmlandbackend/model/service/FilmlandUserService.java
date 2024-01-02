@@ -1,12 +1,11 @@
 package com.layla.filmlandbackend.model.service;
 
-import com.layla.filmlandbackend.controller.dto.LoginRequestDTO;
+import com.layla.filmlandbackend.model.dto.LoginRequestDTO;
 import com.layla.filmlandbackend.enums.AuthRoles;
 import com.layla.filmlandbackend.exception.UserAlreadyExistsException;
 import com.layla.filmlandbackend.interfaces.UserService;
 import com.layla.filmlandbackend.model.entity.FilmlandUser;
 import com.layla.filmlandbackend.model.repository.FilmlandUserRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

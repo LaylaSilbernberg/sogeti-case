@@ -1,6 +1,6 @@
 package com.layla.filmlandbackend.exception;
 
-import com.layla.filmlandbackend.controller.dto.ResponseDTO;
+import com.layla.filmlandbackend.model.dto.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,4 +1,4 @@
-package com.layla.filmlandbackend.controller.dto;
+package com.layla.filmlandbackend.model.dto;
 
 import java.util.Set;
 

@@ -1,7 +1,7 @@
 package com.layla.filmlandbackend.controller;
 
-import com.layla.filmlandbackend.controller.dto.LoginRequestDTO;
-import com.layla.filmlandbackend.controller.dto.ResponseDTO;
+import com.layla.filmlandbackend.model.dto.LoginRequestDTO;
+import com.layla.filmlandbackend.model.dto.ResponseDTO;
 import com.layla.filmlandbackend.enums.AuthRoles;
 import com.layla.filmlandbackend.interfaces.UserService;
 import com.layla.filmlandbackend.model.entity.FilmlandUser;

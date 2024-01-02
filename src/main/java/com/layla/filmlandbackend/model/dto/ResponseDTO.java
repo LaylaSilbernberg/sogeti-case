@@ -1,4 +1,4 @@
-package com.layla.filmlandbackend.controller.dto;
+package com.layla.filmlandbackend.model.dto;
 
 
 import jakarta.validation.constraints.NotBlank;

@@ -1,6 +1,6 @@
 package com.layla.filmlandbackend.interfaces;
 
-import com.layla.filmlandbackend.controller.dto.CategoriesDTO;
+import com.layla.filmlandbackend.model.dto.CategoriesDTO;
 import com.layla.filmlandbackend.enums.SubscriptionCategory;
 import com.layla.filmlandbackend.model.entity.FilmlandUser;
 import com.layla.filmlandbackend.model.entity.Subscription;

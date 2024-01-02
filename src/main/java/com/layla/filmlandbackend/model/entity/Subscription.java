@@ -1,6 +1,6 @@
 package com.layla.filmlandbackend.model.entity;
 
-import com.layla.filmlandbackend.controller.dto.SubscriptionDTO;
+import com.layla.filmlandbackend.model.dto.SubscriptionDTO;
 import com.layla.filmlandbackend.enums.SubscriptionCategory;
 import jakarta.persistence.*;
 import org.hibernate.proxy.HibernateProxy;

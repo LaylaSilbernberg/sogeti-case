@@ -2,8 +2,8 @@ package com.layla.filmlandbackend.model.service;
 
 import com.layla.filmlandbackend.exception.EmailSchedulingException;
 import com.layla.filmlandbackend.exception.InvalidSubscriptionException;
-import com.layla.filmlandbackend.controller.dto.CategoriesDTO;
-import com.layla.filmlandbackend.controller.dto.CategoryDTO;
+import com.layla.filmlandbackend.model.dto.CategoriesDTO;
+import com.layla.filmlandbackend.model.dto.CategoryDTO;
 import com.layla.filmlandbackend.enums.SubscriptionCategory;
 import com.layla.filmlandbackend.exception.InvalidCategoryException;
 import com.layla.filmlandbackend.interfaces.SubscriptionService;
@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
