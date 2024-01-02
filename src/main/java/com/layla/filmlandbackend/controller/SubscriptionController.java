@@ -1,6 +1,5 @@
 package com.layla.filmlandbackend.controller;
 
-import com.layla.filmlandbackend.controller.dto.*;
 import com.layla.filmlandbackend.interfaces.SubscriptionService;
 import com.layla.filmlandbackend.model.dto.*;
 import com.layla.filmlandbackend.model.entity.FilmlandUser;
@@ -22,7 +21,7 @@ public class SubscriptionController {
 
     private final Logger LOG = LoggerFactory.getLogger(SubscriptionController.class);
 
-    private SubscriptionService service;
+    private final SubscriptionService service;
 
     public SubscriptionController(SubscriptionService service) {
         this.service = service;
