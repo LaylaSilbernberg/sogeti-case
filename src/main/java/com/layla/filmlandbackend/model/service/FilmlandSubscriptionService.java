@@ -119,6 +119,10 @@ public class FilmlandSubscriptionService implements SubscriptionService {
     public Set<FilmlandUser> addSubscriber(String username, String clientName, SubscriptionCategory category) {
         Subscription subscription = getUser(username).getSubscription(category);
         FilmlandUser userToAdd = getUser(clientName);
+        if (subscription.getUsers().contains(userToAdd)){
+            throw new InvalidSubscriptionException("User is already subscribed!");
+        }
+
         userToAdd.addSubscriptions(subscription);
         subscription.addUser(userToAdd);
         userRepository.save(userToAdd);

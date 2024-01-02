@@ -2,6 +2,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
+    #Important to make an environment variable for the gmail and the gmail api password
     username: ${GMAIL}
     password: ${GMAIL_PASSWORD}
     properties:

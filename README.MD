@@ -26,6 +26,55 @@ Here's how you can create and use app passwords:
 7.  To use the app password, follow the instructions on your screen. The app password is the 16-character code generated on your device.
 8.  Click "Done."
 
+## Endpoints
+
+The current endpoints are detailed below along with any required bodies.
+
+- POST "/api/register" for registration.
+  - Requires a body with the following format:
+    ```json
+    {
+    "username": "moonwasyellow@nightwasyoung.com",
+    "password": "JavaIsCool!!!111"
+    }
+    ```
+- POST "/api/login" for login
+  - Requires a body with the following format:
+      ```json{
+    "username": "moonwasyellow@nightwasyoung.com",
+    "password": "JavaIsCool!!!111"
+    }
+    ```
+  - Naturally, username and password have to exist.
+  - Sends back an authorization header that needs to be sent in for every single request that doesn't involve login or registration.
+    - Holds a jwt
+- GET "/api/subscriptions" for available and running subscriptions
+  - Requires correct authorization header
+  - Requires just the username sent in in json, as follows:
+  ```json
+  "moonwasyellow@nightwasyoung.com"
+  ```
+- POST "/api/subscriptions" to subscribe to a category.
+  - Requires correct authorization header
+  - Requires the username and category in json as follows:
+  ```json
+  {
+    "username":"moonwasyellow@nightwasyoung.com",
+    "category": "DUTCH_FILMS"
+  }
+  ```
+  - Current categories are: DUTCH_FILMS, DUTCH_SERIES, INTERNATIONAL_FILMS
+- PATCH "/api/subscriptions" to share a subscription.
+  - Requires correct authorization header
+  - Requires the username of the account that is sharing, the username of the account being shared with and the subscription in json as follows:
+  ```json
+  {
+    "email": "moonwasyellow@nightwasyoung.com",
+    "customer":"client@filmland-assessment.nl",
+    "subscribedCategory": "DUTCH_FILMS"
+  }
+  ```
+  - all emails involved must belong to registered accounts.
 ## To-do
 
 - [ ] Add more tests!
