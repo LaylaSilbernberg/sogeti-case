@@ -52,7 +52,7 @@ The current endpoints are detailed below along with any required bodies.
 - GET "/api/subscriptions" for available and running subscriptions
   - Requires correct authorization header
   - Requires just the username sent in in json, as follows:
-  ```json
+  ```
   moonwasyellow@nightwasyoung.com
   ```
 - POST "/api/subscriptions" to subscribe to a category.
