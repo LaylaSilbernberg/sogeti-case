@@ -40,7 +40,8 @@ The current endpoints are detailed below along with any required bodies.
     ```
 - POST "/api/login" for login
   - Requires a body with the following format:
-      ```json{
+      ```json
+    {
     "username": "moonwasyellow@nightwasyoung.com",
     "password": "JavaIsCool!!!111"
     }
@@ -52,7 +53,7 @@ The current endpoints are detailed below along with any required bodies.
   - Requires correct authorization header
   - Requires just the username sent in in json, as follows:
   ```json
-  "moonwasyellow@nightwasyoung.com"
+  moonwasyellow@nightwasyoung.com
   ```
 - POST "/api/subscriptions" to subscribe to a category.
   - Requires correct authorization header
