@@ -13,6 +13,7 @@ Currently, the user can:
 ## Important to note!
 
 Currently, the app makes use of java mail with gmail smtp. This requires credentials in the form of a valid gmail address and an app password. These credentials are stored in the GMAIL and GMAIL_PASSWORD environment variables. Be sure to either make environment variables with these values or simply replace them with valid values.
+You can also contact me for credentials.
 
 Here's how you can create and use app passwords:
 
